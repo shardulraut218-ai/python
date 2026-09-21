@@ -1,4 +1,3 @@
-
 import random
 
 print("WELCOME TO THE GAME !!!")
