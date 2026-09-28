@@ -1,3 +1,5 @@
+import socket 
+
 class Target :
     def __init__(self,ip_address,hostname) :
         self.ip_address = ip_address
@@ -8,11 +10,20 @@ class Target :
     def scan_port(self,port) : 
         print(f"[*] Scanning {self.ip_address} on port {port}")
 
-        if port in [22,80,443] :
-            print(f"[+] Port {port} is open")
+        s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+        s.settimeout(1)
+        result = s.connect_ex((self.ip_address,port))
+
+        print(f" [DEBUG] Result of scanning port {port} : {result}")
+
+        if result == 0 :
             self.open_ports.append(port)
+            print(f"[+] Port {port} is open")
         else :
-            print(f"[-] Port {port} is closed")
+            print(f"[-] Port {port} is closed")     
+
+        s.close()
+
 
     def report (self) :
             print(f"\n---- Report for {self.ip_address} ({self.hostname})-----")
@@ -57,6 +68,9 @@ class DatabaseTarget(Target):
         print(f"[*] Database type : {self.database_type}")
 
 
+
+
+
 print("=" * 40)
 print("   WELCOME TO SHARDUL'S SECURITY TOOL")
 print("=" * 40)
@@ -76,6 +90,7 @@ while True:
         
         user_web = WebTarget(ip, host, domain)
         user_web.scan_port(80)
+        user_web.scan_port(8000)
         user_web.scan_port(22)
         user_web.check_sql_injection()
         user_web.report()
