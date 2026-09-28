@@ -1,28 +1,38 @@
 # My Python Practice 🐍
 
-Hello! I'm Shardul, a first-year BTech CSE (IoT & Cyber Security) student at VIT Pune. 
-This repository serves as a time capsule for my Python learning journey. It contains the foundational projects I built while getting comfortable with core programming concepts before and during my first semester.
+Hello! I'm Shardul, a first-year BTech CSE (IoT & Cyber Security) student at VIT Pune. This repository serves as a time capsule for my Python learning journey. It contains the foundational projects I built while getting comfortable with core programming concepts, and now, advanced Object-Oriented Programming (OOP) security tools.
 
 ## 📁 Projects
 
-### 🧮 1. Command-Line Calculator (`calculator.py`)
-A robust calculator that doesn't just do math—it handles user mistakes gracefully.
+### 🛡️ 1. Interactive Security Scanner (`security_tool.py`)
+An Object-Oriented Programming (OOP) based simulation of a penetration testing tool. This project demonstrates inheritance, method overriding, and user interaction.
+*   **Features:**
+    *   **Base Class (`Target`):** Handles core functions like scanning ports (simulated) and generating reports.
+    *   **Inheritance (`WebTarget`):** Inherits from `Target` but adds unique web-specific methods like `check_sql_injection()`.
+    *   **Inheritance (`DatabaseTarget`):** Inherits from `Target` but adds database-specific checks like `check_default_password()`.
+    *   **Interactive Menu:** Uses a `while` loop and user input (`input()`) to allow the user to choose which type of target to scan.
+*   **Concepts used:** Object-Oriented Programming (Classes, `__init__`, `self`), Inheritance (`super()`), Method Overriding, f-strings, `while` loops, conditionals.
+
+### 🧮 2. Command-Line Calculator (`calculator.py` & `function_calculator.py`)
+A robust calculator that handles user mistakes gracefully and is refactored into modular functions.
 *   **Features:**
     *   Supports addition, subtraction, multiplication, division, modulo (`%`), and exponentiation (`**`).
     *   Runs continuously in a loop until the user types "quit".
     *   Prevents division by zero errors.
-    *   Uses `try/except` blocks to prevent the program from crashing if a user types a letter instead of a number.
-*   **Concepts used:** `while` loops, `if/elif/else`, `try/except` error handling, floating-point arithmetic.
+    *   Uses `try/except` blocks to prevent crashing if a user types a letter instead of a number.
+    *   **Refactored:** Moved math logic into separate `def add()`, `def subtract()`, etc., functions for modularity.
+*   **Concepts used:** Functions, `while` loops, `if/elif/else`, `try/except` error handling, floating-point arithmetic.
 
-### 🎲 2. Word Guessing Game (`guessgame.py`)
+### 🎲 3. Word Guessing Game (`game2.py` / `guessgame.py`)
 An interactive terminal game where the player has limited attempts to guess a randomly selected word.
 *   **Features:**
     *   Randomly selects a word from a custom list (Linux/Unix/CyberSec themed).
-    *   Gives the player only 3 attempts to guess correctly.
-    *   Uses case-insensitive matching (e.g., "Linux" and "linux" count as the same).
-*   **Concepts used:** `random` module, `while` loops, boolean flags (`out_of_guesses`), user input handling.
+    *   **Replayability:** Includes a "Play Again" loop.
+    *   **Input Validation:** Prevents empty guesses and handles case-insensitivity.
+    *   **Attempt Tracker:** Displays exactly how many tries you have left.
+*   **Concepts used:** User-defined functions (`def`), `while` loops, boolean flags, `random` module, string methods (`.lower()`).
 
-### 🔢 3. FizzBuzz Algorithm (`fizz.py`)
+### 🔢 4. FizzBuzz Algorithm (`fizz.py`)
 The classic programming interview question, optimized.
 *   **Features:**
     *   Takes a maximum number from the user.
@@ -30,36 +40,18 @@ The classic programming interview question, optimized.
     *   Optimized to check multiples of 15 first to avoid redundant conditions.
 *   **Concepts used:** `for` loops, modulo arithmetic (`%`), conditional logic.
 
-### 🔤 4. Vowel and Consonant Counter (`pratice.py`)
-A simple string analysis tool.
-*   **Features:**
-    *   Takes a name or sentence as input.
-    *   Counts the number of vowels and consonants.
-    *   Handles uppercase and lowercase letters seamlessly.
-*   **Concepts used:** String iteration, `.lower()` method, `in` operator.
-
 ## 🛠️ Technologies & Tools Used
 *   **Language:** Python 3.14
 *   **Editor:** VS Code
 *   **Version Control:** Git & GitHub
+*   **Networking Simulation:** Cisco Packet Tracer (100% Score in Final Exam)
 
 ## 🚀 How to Run
 1. Ensure you have Python installed.
 2. Clone this repository: `git clone <your-repo-url>`
 3. Navigate to the folder and run any script:
-   bash
+   ```bash
+   python security_tool.py
    python calculator.py
-   python guessgame.py
+   python game2.py
    python fizz.py
-   python pratice.py
-
-
-🎯 Future Goals
-
-As I progress through my degree, I plan to expand this repository with:
-
-· Object-Oriented Programming (OOP) projects.
-· Automation scripts using Bash and Python.
-· Basic network scanning tools.
-· Write-ups for PicoCTF challenges.
-
