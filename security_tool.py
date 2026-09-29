@@ -42,11 +42,11 @@ class WebTarget (Target) :
         print(f"[+] SQL Injection vulnerability found on {self.domain}")
 
 
-    def check_default_passwords(self) :
-        print(f"[*] Checking {self.database_type} on {self.ip_address} for default passwords ......")
-        self.default_credentials.append("Default Passwords")
-        self.default_credentials = True 
-        print(f"[!]WARNING: Default Passwords vulnerability found on {self.database_type}")
+    def check_robots_txt(self) :
+        print(f"[*] Checking {self.domain} for robots.txt file........")
+
+        print(f"[+] robots.txt found on {self.domain}")
+        self.vulnerabilities.append("Hidden directories exposed via robots.txt")    
 
 
 
@@ -93,6 +93,7 @@ while True:
         user_web.scan_port(8000)
         user_web.scan_port(22)
         user_web.check_sql_injection()
+        user_web.check_robots_txt()
         user_web.report()
         
     elif choice == "2":
